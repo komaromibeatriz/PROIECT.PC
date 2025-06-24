@@ -31,7 +31,7 @@ def log_pulse(value):
         'gas': 200000,
         'gasPrice': w3.to_wei('10', 'gwei')
     })
-    signed_tx = w3.eth.account.sign_transaction(tx, private_key="0xPRIVATE_KEY")  # ← test için özel anahtar
+    signed_tx = w3.eth.account.sign_transaction(tx, private_key="0xPRIVATE_KEY")  # 
     tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
     print(f"Pulse {value} loglandı → TX Hash: {tx_hash.hex()}")
 
