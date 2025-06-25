@@ -1,27 +1,27 @@
-# Simulator temperatură și saturație – Proiect
 
-Acest script (`simulator.py`) generează date aleatorii de temperatură și saturație pentru un pacient și le salvează într-o bază de date MySQL.
+# Plugin REST + FHIR (Membrul 5)
 
-## 📦 Ce face:
-- Generează valori aleatorii la 5 secunde
-- Salvează în tabelele:
-  - `temperatures(patient_id, value, timestamp)`
-  - `saturations(patient_id, value, timestamp)`
+Acest modul oferă un endpoint REST compatibil cu FHIR pentru a accesa date despre puls.
 
-## 🛠 Configurare:
-1. Instalează pachetele:
-```
-pip install -r requirements.txt
-```
+## Endpointuri
 
-2. Editează fișierul `db_config.py` cu datele tale MySQL.
+- `GET /api/fhir/Observation/<id>` — returnează observația FHIR cu un ID dat (simulată static).
 
-3. Rulează simulatorul:
-```
-python simulator.py
+## Exemple
+
+```bash
+curl http://localhost:5000/api/fhir/Observation/1
 ```
 
-## 🧩 Legături viitoare:
-- API Flask citește aceste date (pasul 2)
-- Interfața web afișează alerte
-- Blockchain primește valorile periculoase
+## Cum se rulează
+
+```bash
+pip install flask
+python plugin_fhir/app.py
+```
+
+## Structură
+
+- `app.py`: aplicația Flask principală
+- `api/routes.py`: definește rutele REST
+- `schemas.py`: generează structura FHIR
